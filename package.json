@@ -1,0 +1,19 @@
+{
+  "name": "message-limiter-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "bun index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.3.1",
+    "node-fetch": "^3.3.2"
+  }
+}
+
