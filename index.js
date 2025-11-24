@@ -23,7 +23,7 @@ async function safeReply(message, text) {
       !message.guild?.members.me?.permissionsIn(message.channel)
         ?.has("SendMessages")
     ) {
-      console.warn("Bot cannot send messages in this channel.");
+      console.warn("Bot cannot send messages in this channel!");
       return;
     }
     return await message.reply(text);
