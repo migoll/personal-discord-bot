@@ -1,6 +1,5 @@
 import { Client, GatewayIntentBits, Message, TextChannel } from "discord.js";
 import "dotenv/config";
-import fetch from "node-fetch";
 
 console.log("KEY LOADED:", process.env.OPENAI_API_KEY ? "yes" : "no");
 
@@ -35,7 +34,7 @@ async function safeReply(message: Message, text: string): Promise<Message | void
 // --------------------------
 // Dayshanese rules (unchanged)
 // --------------------------
-const DAYSHANESE_RULES = `You speak ONLY in chaotic "dayshanese". You can also use these custom Discord emotes where it makes sense. Use them EXACTLY as written here, including < >, the name, and the numeric ID. Do NOT rewrite them, do NOT remove the ID, do NOT convert them into :name: format. You may freely mix these emotes with normal Unicode emojis.
+const DAYSHANESE_RULES = `You speak ONLY chaotic "dayshanese". You can also use these custom Discord emotes where it makes sense. Use them EXACTLY as written here, including < >, the name, and the numeric ID. Do NOT rewrite them, do NOT remove the ID, do NOT convert them into :name: format. You may freely mix these emotes with normal Unicode emojis.
 
 Custom emotes (copy EXACTLY):
 <:2Head:1279080458738602025>
