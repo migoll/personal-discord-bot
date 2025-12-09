@@ -80,12 +80,15 @@ src/index.ts
 ```
 
 #### **STARTUP COMMAND**
-Replace the default command with:
+Replace the default command with this EXACT command:
 ```bash
-if [[ -d .git ]] && [[ 0 == "1" ]]; then git pull; fi; if [[ ! -z ${NODE_PACKAGES} ]]; then /usr/local/bin/npm install ${NODE_PACKAGES}; fi; if [[ ! -z ${UNNODE_PACKAGES} ]]; then /usr/local/bin/npm uninstall ${UNNODE_PACKAGES}; fi; if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; npx ts-node /home/container/src/index.ts
+if [[ -d .git ]] && [[ ${AUTO_UPDATE} == "1" ]]; then git pull; fi; if [[ ! -z ${NODE_PACKAGES} ]]; then /usr/local/bin/npm install ${NODE_PACKAGES}; fi; if [[ ! -z ${UNNODE_PACKAGES} ]]; then /usr/local/bin/npm uninstall ${UNNODE_PACKAGES}; fi; if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; npx ts-node --esm /home/container/src/index.ts
 ```
 
-**Important**: The last part (`npx ts-node /home/container/src/index.ts`) must point to your TypeScript file.
+**Critical Fixes**:
+- Use `${AUTO_UPDATE} == "1"` (not `0 == "1"`) - matches Cybrancee's variable
+- Use `--esm` flag for ES modules support
+- Use hardcoded path `/home/container/src/index.ts` (don't rely on `${BOT_TS_FILE}` variable)
 
 #### **AUTO UPDATE**
 ✅ **Toggle ON** - This will auto-deploy when you push to GitHub
@@ -156,8 +159,18 @@ git push origin main
 ### Error: "fatal: could not read Username"
 **Fix**: Your GitHub token is wrong or expired. Generate a new one.
 
-### Error: "Cannot find module 'src/index.ts'"
-**Fix**: Check that "BOT TS FILE" is set to `src/index.ts` (not `index.ts`)
+### Error: "Cannot find module './index.ts'" or "Cannot find module 'src/index.ts'"
+**Fix**: 
+1. Make sure your startup command uses the **hardcoded full path**: `/home/container/src/index.ts`
+2. Don't rely on `${BOT_TS_FILE}` variable - use the path directly
+3. Add `--esm` flag: `npx ts-node --esm /home/container/src/index.ts`
+4. Verify the file exists in Cybrancee File Manager at `/home/container/src/index.ts`
+
+**Alternative if above doesn't work**: Try using `tsx` instead of `ts-node`:
+```bash
+# Add tsx to ADDITIONAL NODE PACKAGES: tsx
+# Then use: npx tsx /home/container/src/index.ts
+```
 
 ### Error: "npm not found"
 **Fix**: Make sure Docker Image is set to **NodeJS 23** (or latest Node version)

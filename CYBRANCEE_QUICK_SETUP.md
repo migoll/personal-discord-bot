@@ -35,9 +35,12 @@ src/index.ts
 ```
 
 ### STARTUP COMMAND
+**IMPORTANT**: Use this EXACT command (with hardcoded path, not variable):
 ```bash
-if [[ -d .git ]] && [[ 0 == "1" ]]; then git pull; fi; if [[ ! -z ${NODE_PACKAGES} ]]; then /usr/local/bin/npm install ${NODE_PACKAGES}; fi; if [[ ! -z ${UNNODE_PACKAGES} ]]; then /usr/local/bin/npm uninstall ${UNNODE_PACKAGES}; fi; if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; npx ts-node /home/container/src/index.ts
+if [[ -d .git ]] && [[ ${AUTO_UPDATE} == "1" ]]; then git pull; fi; if [[ ! -z ${NODE_PACKAGES} ]]; then /usr/local/bin/npm install ${NODE_PACKAGES}; fi; if [[ ! -z ${UNNODE_PACKAGES} ]]; then /usr/local/bin/npm uninstall ${UNNODE_PACKAGES}; fi; if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; npx ts-node --esm /home/container/src/index.ts
 ```
+
+**Note**: The key fix is using `--esm` flag and the full hardcoded path `/home/container/src/index.ts` instead of `${BOT_TS_FILE}`
 
 ### Environment Variables
 
