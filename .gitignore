@@ -1,25 +1,6 @@
-# Dependencies
 node_modules/
-
-# Environment variables
-.env
-
-# Logs
-*.log
-npm-debug.log*
-
-# OS files
-.DS_Store
-__MACOSX/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Build outputs
 dist/
-build/
-
-
+.env
+*.log
+.DS_Store
+*.tsbuildinfo
