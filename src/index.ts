@@ -41,11 +41,11 @@ client.on("messageCreate", async (message: Message) => {
   }
 });
 
-client.on("error", (err) => {
+client.on("error", (err: Error) => {
   console.error("Discord client error:", err);
 });
 
-client.on("shardError", (err) => {
+client.on("shardError", (err: Error) => {
   console.error("Websocket shard error:", err);
 });
 
