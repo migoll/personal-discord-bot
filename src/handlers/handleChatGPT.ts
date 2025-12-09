@@ -1,6 +1,6 @@
 import type { Client, Message } from "discord.js";
-import { safeReply } from "../utils/safeReply.js";
-import { fetchOpenAI } from "../utils/fetchOpenAI.js";
+import { safeReply } from "../utils/safeReply.ts";
+import { fetchOpenAI } from "../utils/fetchOpenAI.ts";
 
 const DAYSHANESE_RULES = `
 You speak ONLY in chaotic "dayshanese".

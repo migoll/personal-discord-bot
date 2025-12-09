@@ -1,8 +1,8 @@
 import { Client, GatewayIntentBits, type Message } from "discord.js";
 import dotenv from "dotenv";
-import { handleRandomSnipe } from "./src/handlers/handleRandomSnipe.js";
-import { handleChatGPT } from "./src/handlers/handleChatGPT.js";
-import { handleSummary } from "./src/handlers/handleSummary.js";
+import { handleRandomSnipe } from "./src/handlers/handleRandomSnipe.ts";
+import { handleChatGPT } from "./src/handlers/handleChatGPT.ts";
+import { handleSummary } from "./src/handlers/handleSummary.ts";
 
 dotenv.config();
 

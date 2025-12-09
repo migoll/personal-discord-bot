@@ -1,6 +1,6 @@
 import type { Message } from "discord.js";
-import { safeReply } from "../utils/safeReply.js";
-import { fetchOpenAI } from "../utils/fetchOpenAI.js";
+import { safeReply } from "../utils/safeReply.ts";
+import { fetchOpenAI } from "../utils/fetchOpenAI.ts";
 
 export async function handleSummary(message: Message): Promise<void> {
   const isSerious = message.content.toLowerCase().startsWith("seriously");
